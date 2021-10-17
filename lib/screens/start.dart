@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_networth_app/screens/speltips.dart';
+import 'package:flutter_networth_app/screens/starta_runda.dart';
 
 class StartPage extends StatefulWidget {
   @override
@@ -25,7 +27,12 @@ class _StartPageState extends State<StartPage> {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => StartaRunda(),
+                    fullscreenDialog: true,
+                  ),
+                ),
                 child: Text(
                   'Starta runda',
                   style: Theme.of(context).textTheme.button!.copyWith(
