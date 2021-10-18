@@ -7,6 +7,9 @@ class StartaRunda extends StatefulWidget {
 }
 
 class _NetworthPageState extends State<StartaRunda> {
+  List<String> item = List.filled(25, "Lägg till spelare");
+  late String temp;
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -19,83 +22,84 @@ class _NetworthPageState extends State<StartaRunda> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      body: Column(children: [
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+          color: Colors.white,
+          height: height * 0.1,
+          width: width * 0.9,
+          child: Card(
             color: Colors.white,
-            height: height * 0.1,
-            width: width * 0.9,
-            child: Card(
-              color: Colors.white,
-              elevation: 0,
+            elevation: 0,
+            child: TextField(
+              onChanged: (str) {},
+              maxLength: 25,
             ),
           ),
-          SizedBox(
-            height: 20,
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white,
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-            ),
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => StartaRunda(),
-                fullscreenDialog: true,
+          onPressed: () {},
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.add, color: Colors.black),
+              Text(
+                'Lägg till spelare',
+                style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Colors.grey.shade800,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
               ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.add, color: Colors.black),
-                Text(
-                  'Lägg till spelare',
-                  style: Theme.of(context).textTheme.button!.copyWith(
-                        color: Colors.grey.shade800,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                ),
-              ],
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xffefae28),
+          ),
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => StartaRunda(),
+              fullscreenDialog: true,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xffefae28),
-            ),
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => StartaRunda(),
-                fullscreenDialog: true,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.play_arrow,
+                color: Colors.black,
               ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.play_arrow,
-                  color: Colors.black,
-                ),
-                Text(
-                  'Starta runda!',
-                  style: Theme.of(context).textTheme.button!.copyWith(
-                        color: Colors.grey.shade800,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                ),
-              ],
-            ),
+              Text(
+                'Starta runda!',
+                style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Colors.grey.shade800,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        ListView(),
+      ]),
 
       // Column(
       //   crossAxisAlignment: CrossAxisAlignment.center,
