@@ -33,6 +33,7 @@ class _NetworthPageState extends State<StartaRunda> {
               setState(() {});
             },
           ),
+          
           new Expanded(
             child: new ListView.builder(
                 itemCount: litems.length,
