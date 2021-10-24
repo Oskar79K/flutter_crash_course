@@ -148,7 +148,9 @@ class _NetworthPageState extends State<StartaRunda> {
           final user = users[index];
 
           return AlertDialog(
+            backgroundColor: Colors.white,
             content: TextFormField(
+              style: TextStyle(color: Colors.black),
               autofocus: true,
               initialValue: user.name,
               onFieldSubmitted: (_) => Navigator.of(context).pop(),
