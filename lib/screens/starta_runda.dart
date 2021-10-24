@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_networth_app/data/data.dart';
 import 'package:flutter_networth_app/models/spelare.dart';
+import 'package:flutter_networth_app/screens/runda.dart';
 import 'package:flutter_networth_app/screens/speltips.dart';
+import 'package:flutter_networth_app/widgets/add_player.dart';
 
 class StartaRunda extends StatefulWidget {
   @override
@@ -11,18 +13,14 @@ class StartaRunda extends StatefulWidget {
 }
 
 class _NetworthPageState extends State<StartaRunda> {
-  List<User> spelare = [];
-
-  void initState() {
-    super.initState();
-
-    spelare = getUsers();
-  }
+  List<User> users = [];
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final TextEditingController addPlayer = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -34,47 +32,82 @@ class _NetworthPageState extends State<StartaRunda> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(14.0),
+            padding: const EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 0.0),
             child: Text(
               "Här kan du lägga till alla spelare i rundan. Du kan även dra-och-släppa om du vill ändra ordningen. Lycka till!",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 14),
             ),
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text("Lägg till spelare"),
+          SizedBox(
+            height: 20.0,
           ),
-          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
+            child: TextFormField(
+              controller: addPlayer,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person),
+                hintText: "Skriv in nästa spelares namn",
+                border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      users.add(
+                        User(name: addPlayer.text),
+                      );
+                    });
+                  },
+                  icon: Icon(
+                    Icons.add_box_rounded,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
           Expanded(
             child: new ReorderableListView.builder(
-                itemCount: spelare.length,
+                itemCount: users.length,
                 onReorder: (oldIndex, newIndex) => setState(() {
                       final index =
                           newIndex > oldIndex ? newIndex - 1 : newIndex;
-                      final user = spelare.removeAt(oldIndex);
-                      spelare.insert(index, user);
+                      final user = users.removeAt(oldIndex);
+                      users.insert(index, user);
                     }),
                 itemBuilder: (context, index) {
-                  final user = spelare[index];
+                  final user = users[index];
                   return buildPlayer(index, user);
                 }),
           ),
           SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text("Starta"),
+          Container(
+            child: TextButton(
+              child: Text(
+                "Starta runda!",
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Runda2(users: users),
+                  fullscreenDialog: false,
+                ),
+              ),
+            ),
+            color: Colors.yellow,
+            height: 60,
+            width: MediaQuery.of(context).size.width,
           ),
         ],
       ),
     );
   }
 
-  Widget buildPlayer(int index, User spelare) => ListTile(
-        key: ValueKey(spelare),
+  Widget buildPlayer(int index, User user) => ListTile(
+        key: ValueKey(user),
         title: Container(
-          width: 200,
+          width: MediaQuery.of(context).size.width,
           height: 50,
           color: Colors.white,
           child: Padding(
@@ -86,7 +119,7 @@ class _NetworthPageState extends State<StartaRunda> {
                 TextButton(
                   onPressed: () => edit(index),
                   child: Text(
-                    spelare.name,
+                    user.name,
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -95,7 +128,10 @@ class _NetworthPageState extends State<StartaRunda> {
                 ),
                 IconButton(
                   onPressed: () => remove(index),
-                  icon: Icon(Icons.close),
+                  icon: Icon(
+                    Icons.delete,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   color: Colors.black,
                 ),
               ],
@@ -104,15 +140,16 @@ class _NetworthPageState extends State<StartaRunda> {
         ),
       );
 
-  void remove(int index) => setState(() => spelare.removeAt(index));
+  void remove(int index) => setState(() => users.removeAt(index));
 
   void edit(int index) => showDialog(
         context: context,
         builder: (context) {
-          final user = spelare[index];
+          final user = users[index];
 
           return AlertDialog(
             content: TextFormField(
+              autofocus: true,
               initialValue: user.name,
               onFieldSubmitted: (_) => Navigator.of(context).pop(),
               onChanged: (name) => setState(() => user.name = name),
