@@ -1,6 +1,4 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_networth_app/data/data.dart';
 import 'package:flutter_networth_app/models/spelare.dart';
 import 'package:flutter_networth_app/screens/banor.dart';
 
@@ -72,7 +70,7 @@ class _Runda2State extends State<Runda2> {
                       _myController.text,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 26,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -82,28 +80,23 @@ class _Runda2State extends State<Runda2> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Banor(laneNumber: "1"),
-                      Banor(laneNumber: "2"),
-                      Banor(laneNumber: "3"),
-                      Banor(laneNumber: "4"),
-                      Banor(laneNumber: "5"),
-                      Banor(laneNumber: "6"),
-                      Banor(laneNumber: "7"),
-                      Banor(laneNumber: "8"),
-                      Banor(laneNumber: "9"),
+                      Banor(
+                        laneNumber: "1",
+                        score: _myController.text,
+                      ),
+                      Banor(laneNumber: "2", score: _myController.text),
+                      Banor(laneNumber: "3", score: _myController.text),
+                      Banor(laneNumber: "4", score: _myController.text),
+                      Banor(laneNumber: "5", score: _myController.text),
+                      Banor(laneNumber: "6", score: _myController.text),
+                      Banor(laneNumber: "7", score: _myController.text),
+                      Banor(laneNumber: "8", score: _myController.text),
+                      Banor(laneNumber: "9", score: _myController.text),
                     ],
                   ),
                 ),
                 SizedBox(
                   height: 8.0,
-                ),
-                Text(
-                  "Totalt",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ],
             ),
