@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_networth_app/data/data.dart';
 import 'package:flutter_networth_app/models/spelare.dart';
+import 'package:flutter_networth_app/screens/banor.dart';
 
 class Runda2 extends StatefulWidget {
   List<User> users;
@@ -77,182 +78,19 @@ class _Runda2State extends State<Runda2> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("1"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "1",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("2"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "2",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana3"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "3",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana4"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "4",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana5"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "5",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana6"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "6",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana7"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "7",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana8"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "8",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
-                      Container(
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(8.0, 14.0, 0.0, 0.0),
-                          child: TextField(
-                            controller: _myController,
-                            key: Key("Bana9"),
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                hintText: "9",
-                                border: InputBorder.none,
-                                focusColor: Colors.grey.shade400),
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        height: 30,
-                        width: 30,
-                        color: Colors.grey.shade200,
-                      ),
+                      Banor(laneNumber: "1"),
+                      Banor(laneNumber: "2"),
+                      Banor(laneNumber: "3"),
+                      Banor(laneNumber: "4"),
+                      Banor(laneNumber: "5"),
+                      Banor(laneNumber: "6"),
+                      Banor(laneNumber: "7"),
+                      Banor(laneNumber: "8"),
+                      Banor(laneNumber: "9"),
                     ],
                   ),
                 ),
